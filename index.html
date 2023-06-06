@@ -7,108 +7,36 @@
 
     <title>Kurs waluty - Wykres</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-
-        html {
-            font-size: calc(15px + 0.390625vw);
-        }
-
-        body{
-            color-scheme: dark;
-            background-color: #252526;
-            color: rgb(205, 205, 205);
-        }
-
-        h1 {
-            text-align: center;
-            margin-top: 60px;
-            margin-bottom: 5vw;
-        }
-
-        main{
-                display:flex;
-                justify-content: center;
-        }
-
-        #chartContainer {
-            display:flex;
-            flex-direction: column;
-            width: 60%;
-            height: auto;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -o-user-select: none;
-            user-select: none;
-        }
-        
-        #textContainer {
-            width: 35%;
-            height: 400px;
-            vertical-align: top;
-            padding-left: 20px;
-        }
-
-        #chart{
-            background-color: #1e1e1e;
-            border-style:solid;
-            border-color: #1a1a1a;
-            border-width: 5px;
-        }
-
-        #inputs{
-            display:flex;
-            justify-content:space-evenly;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
-        }
-
-        @media only screen and (max-width: 1055px) {
-            #chartContainer, #textContainer, main {
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                margin-top: 20px;
-            }
-            #inputs{
-            width: 100%;
-            }
-            h1{
-                margin-bottom: 10vw;
-            }
-        }
-
-        @media only screen and (max-width: 610px) {
-            #inputs{
-                display:block;
-                text-align:center;
-            }
-            #definedInputs, #definedInputs>input{
-                display:flex;
-                justify-content: center;
-                gap:10px;
-                margin-bottom: 5px;
-            }
-        }
-
-    </style>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Wymiana walut</h1>
+    <div id="currenciesContainer">
+        Wybierz walutę 
+        <select id="currencies" onchange="handleCurrencyChange(this)">
+            <option value="USD">Dolar Amerykański</option>
+            <option value="AUD">Dolar Australijski</option>
+            <option value="CAD">Dolar kanadyjski</option>
+            <option value="EUR">Euro</option>
+            <option value="CHF">Frank szwajcarski</option>
+            <option value="UAH">Hrywna (Ukraina)</option>
+            <option value="JPY">Jen (Japonia)</option>
+    </select>  
+    </div>
     <main>
         <div id="chartContainer">
             <div id="inputs">
                 <div id="definedInputs">
-                    <input type="radio" name="option" value="tydzien" onclick="handleOptionChange(this)" checked>
+                    <input type="radio" name="option" value=7 onclick="handleOptionChange(this)" checked>
                     <label for="opcja1">Tydzień</label>
-                    <input type="radio" name="option" value="miesiac" onclick="handleOptionChange(this)">
+                    <input type="radio" name="option" value=30 onclick="handleOptionChange(this)">
                     <label for="opcja2">Miesiąc</label>
-                    <input type="radio" name="option" value="3miesiace" onclick="handleOptionChange(this)">
+                    <input type="radio" name="option" value=90 onclick="handleOptionChange(this)">
                     <label for="opcja3">3 Miesiące</label>
                 </div>
                 <div id="customInputs">
-                    <input type="radio" name="option" value="custom" onclick="handleOptionChange(this)">
+                    <input type="radio" name="option" value="0" onclick="handleOptionChange(this)">
                     <label for="opcja4">Custom</label>
                     <input type="date" id="date1" onchange="handleDateChange(this)" disabled>
                     <input type="date" id="date2" onchange="handleDateChange(this)" disabled>
@@ -121,110 +49,5 @@
             <p>...</p>
         </div>
     </main>
-
-    <script>
-        function handleOptionChange(radioButton) {
-            if (radioButton.checked) {
-                var selectedOption = radioButton.value;
-                console.log("Wybrana opcja:", selectedOption);
-                var date1 = document.getElementById('date1');
-                var date2 = document.getElementById('date2');
-
-                if(radioButton.value == 'custom'){
-                    date1.disabled = false;
-                } else {
-                    date1.disabled = true;
-                    date2.disabled = true;
-                }
-
-                switch(radioButton.value){
-                    case 'tydzien':
-                        getExchangeRates(7);
-                    case 'miesiac':
-                        getExchangeRates(30);
-                    case '3miesiace':
-                        getExchangeRates(90);
-                }
-
-
-            }
-        }
-
-        function handleDateChange(dateObject) {
-            console.log(dateObject.id);
-
-            switch(dateObject.id){
-                case 'date1':
-                    document.getElementById('date2').disabled = false;
-	// wyzeruj drugą datę
-                    break;
-                case 'date2':
-                    break;
-            }
-        }
-
-
-        Chart.defaults.backgroundColor = '#BB86FC';
-        Chart.defaults.borderColor = '#123123';
-        Chart.defaults.color = 'rgb(205, 205, 205)';
-
-        // Funkcja pobierająca dane z API NBP
-        function getExchangeRates(days) {
-            var url = `http://api.nbp.pl/api/exchangerates/rates/A/USD/last/${days}/?format=json`;
-            
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    var dates = [];
-                    var rates = [];
-                    
-                    data.rates.forEach(rate => {
-                        dates.push(rate.effectiveDate);
-                        rates.push(rate.mid);
-                    });
-                    
-                    createChart(dates, rates);
-                })
-                .catch(error => {
-                    console.log('Błąd pobierania danych:', error);
-                });
-        }
-
-        function createChart(dates, rates) {
-            var ctx = document.getElementById('chart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: dates,
-                    datasets: [{
-                        label: 'Kurs USD',
-                        data: rates,
-                        fill: false,
-                        borderColor: '#BB86FC',
-                        pointBackgroundColor: '#a762fc',
-                        pointBorderColor: '#a762fc',
-                        tension: 0.1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: false
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    }
-                }
-            });
-            
-            // Obsługa zmiany rozmiaru okna przeglądarki
-            window.addEventListener('resize', function() {
-                myChart.resize();
-            });
-        }
-    </script>
 </body>
 </html>

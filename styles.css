@@ -1,0 +1,108 @@
+html {
+    font-size: calc(15px + 0.390625vw);
+}
+
+body{
+    color-scheme: dark;
+    background-color: #252526;
+    color: rgb(205, 205, 205);
+}
+
+h1 {
+    text-align: center;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+}
+
+main{
+        display:flex;
+        justify-content: center;
+        gap: 10vw;
+}
+
+#currenciesContainer{
+    font-size: 1.5rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5vw;
+}
+
+#currencies{
+    font-size: 1.25rem;
+    height: 1.75rem;
+}
+
+#date1, #date2{
+    width: 115px; 
+}
+
+#chartContainer {
+    font-size: 1.25rem;
+    display:flex;
+    flex-direction: column;
+    width: 50%;
+
+
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#textContainer {
+    width: 40%;
+    height: 400px;
+    vertical-align: top;
+}
+
+#chart{
+    background-color: #1e1e1e;
+    border-style:solid;
+    border-color: #1a1a1a;
+    border-width: 5px;
+}
+
+#inputs{
+    display:flex;
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 1055px) {
+    #chartContainer, #textContainer, main {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+    #inputs{
+    width: 100%;
+    }
+    h1{
+        margin-bottom: 10vw;
+    }
+}
+
+@media only screen and (max-width: 610px) {
+    #inputs{
+        display:block;
+        text-align:center;
+    }
+    #definedInputs, #definedInputs>input{
+        display:flex;
+        justify-content: center;
+        gap:10px;
+        margin-bottom: 5px;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+#currenciesContainer{
+    flex-direction: column;
+}
+}
