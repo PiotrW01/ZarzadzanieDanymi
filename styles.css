@@ -54,9 +54,46 @@ main{
 
 #textContainer {
     width: 40%;
+    border-top: 0px;
+    margin-top: 0px;
+    padding-top: 0px;
+    top: 0px;
     height: 400px;
-    vertical-align: top;
 }
+
+#textContainer>h2{
+    margin: 0px;
+    margin-bottom: 40px;
+}
+
+#calculator{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#calculator>button{
+    min-width: 80px;
+    font-size: 1.25rem;
+    height: 1.75rem;
+    width:40%;
+    border-radius: 20px;
+}
+
+#calcInputs{
+    display:flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#calcInputs>input{
+    width:40%;
+    font-size: 1.25rem;
+    height: 1.75rem;
+}
+
+
 
 #chart{
     background-color: #1e1e1e;
