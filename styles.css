@@ -10,7 +10,7 @@ body{
 
 h1 {
     text-align: center;
-    margin-top: 5vw;
+    margin-top: 2vw;
     margin-bottom: 5vw;
 }
 
@@ -133,7 +133,8 @@ main{
     #definedInputs, #definedInputs>input{
         display:flex;
         justify-content: center;
-        gap:10px;
+        align-items: center;
+        gap:5px;
         margin-bottom: 5px;
     }
 }
