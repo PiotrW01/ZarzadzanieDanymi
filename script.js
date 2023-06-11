@@ -21,11 +21,13 @@ function handleOptionChange(radioButton) {
 
             // ZROBIĆ
 
-            maxDate1 = new Date();
-            maxDate.setDate(maxDate.getDate() - 1).toISOString().split("T")[0];
+            //2 stycznia 2002
+            date1.min = "2002-01-02"
 
-            date1.max = maxDate;
-            date2.max = maxDate2;
+            var yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            var formattedDate = yesterday.toISOString().split('T')[0];
+            date1.max = formattedDate;
 
 
         } else {
@@ -45,16 +47,28 @@ function handleOptionChange(radioButton) {
 
 // Funkcja sterująca zmianą daty
 function handleDateChange(dateObject) {
+    var date1 = document.getElementById('date1');
+    var date2 = document.getElementById('date2');
+
     switch(dateObject.id){
         case 'date1':
-            var date2 = document.getElementById('date2');
             date2.disabled = false;
             date2.value = null;
+
+            var today = new Date();
+            var date = new Date(date1.value);
+            date2.min = date.toISOString().split('T')[0];
+            
+            
+            date.setDate(date.getDate() + 367);
+            if(date >= today){
+                date2.max = today.toISOString().split('T')[0];
+            } else {
+                date2.max = date.toISOString().split('T')[0];
+            }
             break;
         case 'date2':
-            var date1 = document.getElementById('date1').value;
-            var date2 = document.getElementById('date2').value;
-            getExchangeRates(true, date1, date2)
+            getExchangeRates(true, date1.value, date2.value)
             break;
     }
 }
@@ -62,6 +76,9 @@ function handleDateChange(dateObject) {
 // Funkcja sterująca zmianą waluty
 function handleCurrencyChange(currencyOption){
     currency = currencyOption.value;
+
+    document.getElementById('inputCurrency').textContent = "PLN";
+    document.getElementById('outputCurrency').textContent = currency;
     var date1 = document.getElementById('date1').value;
     var date2 = document.getElementById('date2').value;
     if(days == 0 && date2 !== ""){
@@ -100,6 +117,49 @@ function updateChart(dates, rates) {
     chart.data.datasets[0].data = rates;
     chart.update();
 }
+
+
+function calculateCurrency(){
+    var inputField = document.getElementById("inputField");
+    var outputField = document.getElementById("outputField");
+    
+    fetch(`http://api.nbp.pl/api/exchangerates/rates/A/${currency}/last/1/?format=json`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.rates[0].mid);
+        if(document.getElementById("inputCurrency").textContent == "PLN"){
+            outputField.value = (data.rates[0].mid * inputField.value).toFixed(2);
+        } else {
+            outputField.value = (inputField.value / data.rates[0].mid).toFixed(2);;
+        }
+    });
+}
+
+function swapCurrency(){
+    var inputCurrency = document.getElementById("inputCurrency");
+    var outputCurrency = document.getElementById("outputCurrency");
+    
+    if(inputCurrency.textContent == "PLN"){
+        inputCurrency.textContent = currency;
+        outputCurrency.textContent = "PLN";
+    } else {
+        inputCurrency.textContent = "PLN";
+        outputCurrency.textContent = currency;
+    }
+}
+
+// 
+document.getElementById('inputField').addEventListener('input', function(event) {
+    const enteredValue = event.target.value;
+    const sanitizedValue = enteredValue.replace(/[^0-9.]/g, ''); // Remove non-numeric and non-dot characters
+    const dotCount = sanitizedValue.split('.').length - 1;
+    
+    if (dotCount > 1) {
+        event.target.value = enteredValue.replace(/(\.)(?=.*\1)/g, ''); // Remove extra dots
+    } else {
+        event.target.value = sanitizedValue;
+    }
+});
 
 // Funkcja tworząca wykres, wywoływana na samym początku
 function createChart(){

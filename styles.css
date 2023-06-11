@@ -73,18 +73,11 @@ main{
     gap: 20px;
 }
 
-#calculator>button{
-    min-width: 80px;
-    font-size: 1.25rem;
-    height: 1.75rem;
-    width:40%;
-    border-radius: 20px;
-}
-
 #calcInputs{
     display:flex;
+    align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 #calcInputs>input{
@@ -93,7 +86,20 @@ main{
     height: 1.75rem;
 }
 
+#calcButtonAndSwap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 
+#calcButtonAndSwap>button{
+    min-width: 80px;
+    font-size: 1.25rem;
+    height: 1.75rem;
+    width: 50%;
+    border-radius: 10px;
+}
 
 #chart{
     background-color: #1e1e1e;

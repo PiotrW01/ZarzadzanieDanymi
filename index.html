@@ -7,7 +7,7 @@
 
     <title>Kurs waluty - Wykres</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -37,7 +37,7 @@
                 </div>
                 <div id="customInputs">
                     <input type="radio" name="option" value="0" onclick="handleOptionChange(this)">
-                    <label for="opcja4">Custom</label>
+                    <label for="opcja4">Niestandardowe</label>
                     <input type="date" id="date1" onchange="handleDateChange(this)" disabled>
                     <input type="date" id="date2" onchange="handleDateChange(this)" disabled>
                 </div>
@@ -48,12 +48,18 @@
             <h2>Kalkulator walutowy</h2>
             <div id="calculator">
                 <div id="calcInputs">
-                    <input type="text">
-                    <input type="text">
+                    <label id="inputCurrency">PLN</label>
+                    <input id="inputField" type="tel">
+                    <label id="outputCurrency">USD</label>
+                    <input id="outputField" type="tel" disabled>
                 </div>
-                <button type="sumbit">Oblicz</button>
+                <div id="calcButtonAndSwap">
+                    <button onclick="calculateCurrency()">Oblicz</button>
+                    <img src="img/swap1.svg" onclick="swapCurrency()" width="50px" alt="Swap Icon">
+                </div>
             </div>
         </div>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
