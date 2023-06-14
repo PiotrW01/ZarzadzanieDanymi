@@ -1,3 +1,52 @@
-<?xml version="1.0" standalone="no"?>
-        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
-        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill:#fff;opacity:0;}.cls-2{fill:#231f20;}</style></defs><title>swap</title><g id="Layer_2" data-name="Layer 2"><g id="swap"><g id="swap-2" data-name="swap"><rect class="cls-1" width="24" height="24" transform="translate(0 24) rotate(-90)"/><path class="cls-2" d="M4,9H17l-1.6,1.2a1,1,0,0,0-.2,1.4,1,1,0,0,0,.8.4,1,1,0,0,0,.6-.2l4-3a1,1,0,0,0,0-1.59l-3.86-3a1,1,0,0,0-1.23,1.58L17.08,7H4A1,1,0,0,0,4,9Z"/><path class="cls-2" d="M20,16H7l1.6-1.2a1,1,0,0,0-1.2-1.6l-4,3a1,1,0,0,0,0,1.59l3.86,3a1,1,0,0,0,.61.21,1,1,0,0,0,.79-.39,1,1,0,0,0-.17-1.4L6.92,18H20a1,1,0,0,0,0-2Z"/></g></g></g></svg>  
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   fill="none"
+   version="1.1"
+   id="svg4602"
+   sodipodi:docname="swap1.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs4606" />
+  <sodipodi:namedview
+     id="namedview4604"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="35.291667"
+     inkscape:cx="7.2538371"
+     inkscape:cy="12.014168"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4602" />
+  <path
+     opacity="0.4"
+     d="M7.81 2H16.18C19.83 2 22 4.17 22 7.81V16.18C22 19.82 19.83 21.99 16.19 21.99H7.81C4.17 22 2 19.83 2 16.19V7.81C2 4.17 4.17 2 7.81 2Z"
+     fill="#292D32"
+     id="path4596"
+     style="fill:#5e6571;fill-opacity:1" />
+  <path
+     d="M17.69 13.4798C17.61 13.2998 17.47 13.1498 17.28 13.0698C17.19 13.0298 17.09 13.0098 16.99 13.0098H7C6.59 13.0098 6.25 13.3498 6.25 13.7598C6.25 14.1698 6.59 14.5098 7 14.5098H15.19L13.52 16.1798C13.23 16.4698 13.23 16.9498 13.52 17.2398C13.67 17.3898 13.86 17.4598 14.05 17.4598C14.24 17.4598 14.43 17.3898 14.58 17.2398L17.53 14.2898C17.6 14.2198 17.65 14.1398 17.69 14.0498C17.77 13.8598 17.77 13.6598 17.69 13.4798Z"
+     fill="#292D32"
+     id="path4598"
+     style="fill:#ffffff" />
+  <path
+     d="M6.31 10.52C6.39 10.7 6.53 10.85 6.72 10.93C6.81 10.97 6.9 10.99 7 10.99H17C17.41 10.99 17.75 10.65 17.75 10.24C17.75 9.82998 17.41 9.48998 17 9.48998H8.81L10.48 7.81998C10.77 7.52998 10.77 7.04998 10.48 6.75998C10.19 6.46998 9.71 6.46998 9.42 6.75998L6.47 9.70998C6.4 9.77998 6.35 9.85998 6.31 9.94998C6.23 10.14 6.23 10.34 6.31 10.52Z"
+     fill="#292D32"
+     id="path4600"
+     style="fill:#ffffff" />
+</svg>

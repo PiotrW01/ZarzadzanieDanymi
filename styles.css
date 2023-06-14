@@ -91,6 +91,7 @@ main{
     justify-content: center;
     align-items: center;
     width: 100%;
+    gap: 5px;
 }
 
 #calcButtonAndSwap>button{
@@ -99,6 +100,10 @@ main{
     height: 1.75rem;
     width: 50%;
     border-radius: 10px;
+}
+
+#swapImg{
+    height: 2.15rem;
 }
 
 #chart{

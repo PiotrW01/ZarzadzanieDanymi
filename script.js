@@ -122,7 +122,8 @@ function updateChart(dates, rates) {
 function calculateCurrency(){
     var inputField = document.getElementById("inputField");
     var outputField = document.getElementById("outputField");
-    
+    if(inputField.value == "") return;
+
     fetch(`http://api.nbp.pl/api/exchangerates/rates/A/${currency}/last/1/?format=json`)
     .then(response => response.json())
     .then(data => {

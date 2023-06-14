@@ -49,13 +49,13 @@
             <div id="calculator">
                 <div id="calcInputs">
                     <label id="inputCurrency">PLN</label>
-                    <input id="inputField" type="tel">
+                    <input id="inputField" type="tel" placeholder="0.00">
                     <label id="outputCurrency">USD</label>
-                    <input id="outputField" type="tel" disabled>
+                    <input id="outputField" type="tel" placeholder="0.00" disabled>
                 </div>
                 <div id="calcButtonAndSwap">
+                    <img src="img/swap.svg" onclick="swapCurrency()" id="swapImg" alt="Swap Icon">
                     <button onclick="calculateCurrency()">Oblicz</button>
-                    <img src="img/swap1.svg" onclick="swapCurrency()" width="50px" alt="Swap Icon">
                 </div>
             </div>
         </div>
