@@ -19,8 +19,6 @@ function handleOptionChange(radioButton) {
             days = 0;
             date1.disabled = false;
 
-            // ZROBIĆ
-
             //2 stycznia 2002
             date1.min = "2002-01-02"
 
@@ -149,14 +147,14 @@ function swapCurrency(){
     }
 }
 
-// 
+
 document.getElementById('inputField').addEventListener('input', function(event) {
     const enteredValue = event.target.value;
-    const sanitizedValue = enteredValue.replace(/[^0-9.]/g, ''); // Remove non-numeric and non-dot characters
+    const sanitizedValue = enteredValue.replace(/[^0-9.]/g, ''); // usuwa wartości nienumeryczne oprócz kropek
     const dotCount = sanitizedValue.split('.').length - 1;
     
     if (dotCount > 1) {
-        event.target.value = enteredValue.replace(/(\.)(?=.*\1)/g, ''); // Remove extra dots
+        event.target.value = enteredValue.replace(/(\.)(?=.*\1)/g, ''); // usuwa dodatkowe kropki
     } else {
         event.target.value = sanitizedValue;
     }
