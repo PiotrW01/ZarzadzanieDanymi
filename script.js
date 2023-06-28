@@ -127,9 +127,9 @@ function calculateCurrency(){
     .then(data => {
         console.log(data.rates[0].mid);
         if(document.getElementById("inputCurrency").textContent == "PLN"){
-            outputField.value = (data.rates[0].mid * inputField.value).toFixed(2);
+            outputField.value = (inputField.value / data.rates[0].mid).toFixed(2);
         } else {
-            outputField.value = (inputField.value / data.rates[0].mid).toFixed(2);;
+            outputField.value = (inputField.value * data.rates[0].mid).toFixed(2);;
         }
     });
 }
